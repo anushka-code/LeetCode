@@ -1,0 +1,33 @@
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+        
+ * };
+ */
+class Solution {
+public:
+    bool hasCycle(ListNode *head)
+    
+    {
+            // using hasthtable to store the address of all the visited nodes
+            // hashtable searches if the address exists or not in O(1)
+            // it also inserts an item in O(1)
+        
+            unordered_set<ListNode*> s;
+            
+            for(ListNode *curr = head; curr!=NULL; curr = curr->next)
+            {
+                    if(s.find(curr)!=s.end()) // we check if it exists
+                    {
+                            return true;
+                    }
+                    
+                    s.insert(curr); // insert the new node
+            }
+            
+            return false;
+    }
+};
